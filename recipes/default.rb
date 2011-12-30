@@ -45,12 +45,7 @@ node[:greenscreens].each do |gs|
     cwd "#{node[:greenscreen][:install_dir]}/#{gs[:name]}"
     command "if [ ! -e #{node[:greenscreen][:install_dir]}/#{gs[:name]}/.git ]; then git clone git://github.com/customink/greenscreen.git .; fi"
   end
-  
-  execute "Git pull the changes" do
-    cwd "#{node[:greenscreen][:install_dir]}/#{gs[:name]}"
-    command "if [ -e #{node[:greenscreen][:install_dir]}/#{gs[:name]}/.git ]; then git pull; fi"
-  end
-  
+    
   execute "Initiliaze the application" do
     cwd "#{node[:greenscreen][:install_dir]}/#{gs[:name]}"
     command "rake -f init.rakefile"
