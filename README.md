@@ -5,6 +5,14 @@ GreenScreen is a build monitoring tool that is designed to be used as a dynamic 
 
 This cookbook configures a node to run one or more GreenScreen applications.  The cookbook uses [CustomInk's clone of the original GreenScreen project](git://github.com/customink/greenscreen.git).
 
+Changes/Roadmap
+===============
+
+### v0.0.2
+
+* Fix a bug with the default attributes
+* No longer do a git pull with each chef run, this was causing failures when the config.yml was updated.
+
 Requirements
 ============
 
