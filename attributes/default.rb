@@ -7,7 +7,7 @@ default.greenscreens= [
       {
         :url => "http://ci.jenkins-ci.org/view/All/cc.xml",
         :username => "",
-        :password => ""
+        :password => "",
         :jobs => "",
         :ignore_jobs => ""
       }
