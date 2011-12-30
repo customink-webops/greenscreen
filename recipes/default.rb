@@ -40,16 +40,15 @@ node[:greenscreens].each do |gs|
   directory "#{node[:greenscreen][:install_dir]}/#{gs[:name]}" do
     recursive true
   end
-
+  
   execute "Clone the Greenscreen repository" do
     cwd "#{node[:greenscreen][:install_dir]}/#{gs[:name]}"
-    command "git clone git://github.com/customink/greenscreen.git ."
-    not_if "ls #{node[:greenscreen][:install_dir]}/#{gs[:name]}/.git"
+    command "if [ ! -e #{node[:greenscreen][:install_dir]}/#{gs[:name]}/.git ]; then git clone git://github.com/customink/greenscreen.git .; fi"
   end
   
   execute "Git pull the changes" do
     cwd "#{node[:greenscreen][:install_dir]}/#{gs[:name]}"
-    command "git pull"
+    command "if [ -e #{node[:greenscreen][:install_dir]}/#{gs[:name]}/.git ]; then git pull; fi"
   end
   
   execute "Initiliaze the application" do
