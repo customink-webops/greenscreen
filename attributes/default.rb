@@ -5,7 +5,11 @@ default.greenscreens= [
     :port => "4567",
     :servers => [
       {
-        :url => "http://fe-build.customink.office:8080/cc.xml"
+        :url => "http://ci.jenkins-ci.org/view/All/cc.xml",
+        :username => "",
+        :password => ""
+        :jobs => "",
+        :ignore_jobs => ""
       }
     ]
   }
