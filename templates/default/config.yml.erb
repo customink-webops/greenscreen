@@ -5,13 +5,13 @@
   url: <%= server[:url] %>
   <%= (server[:username]) ? "username: #{server[:username]}" : "" %>
   <%= (server[:password]) ? "password: #{server[:password]}" : "" %>
-  <% if server[:ignore_jobs] && server[:ignore_jobs].class == "Array" %>
+  <% if server[:ignore_jobs] %>
   ignore_jobs:
     <% server[:ignore_jobs].each do |ignore| %>
     - <%= ignore %>
     <% end %>
   <% end %>
-  <% if server[:jobs] && server[:jobs].class =="Array" -%>
+  <% if server[:jobs] -%>
   jobs:
     <% server[:jobs].each do |job| %>
     - <%= job %>
