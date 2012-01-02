@@ -7,6 +7,9 @@ This cookbook configures a node to run one or more GreenScreen applications.  Th
 
 Changes/Roadmap
 ===============
+### v0.0.3
+
+* Fix a bug with the config template that was not properly handling explicit jobs or jobs to ignore
 
 ### v0.0.2
 
