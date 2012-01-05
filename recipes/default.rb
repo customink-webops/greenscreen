@@ -46,6 +46,8 @@ node["greenscreens"].each do |gs|
   execute "Clone the Greenscreen repository and initiliaze the application" do
     cwd greenscreen_directory
     command "if [ ! -e #{node["greenscreen"]["install_dir"]}/#{gs["name"]}/.git ]; then git clone git://github.com/customink/greenscreen.git .; fi && rake -f init.rakefile"
+  end
+
   
   template "#{node["greenscreen"]["install_dir"]}/#{gs["name"]}/config.yml" do
     source "config.yml.erb"

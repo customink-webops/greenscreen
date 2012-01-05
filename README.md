@@ -7,6 +7,9 @@ This cookbook configures a node to run one or more GreenScreen applications.  Th
 
 Changes/Roadmap
 ===============
+### v0.0.5
+  * add an 'end' that was missing from the default recipe.
+  
 ### v0.0.4
 * Changes based on [Foodcritic](http://acrmp.github.com/foodcritic/) recommendations:
   * Use strings in preference to symbols to access node attributes.
