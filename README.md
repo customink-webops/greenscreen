@@ -7,6 +7,11 @@ This cookbook configures a node to run one or more GreenScreen applications.  Th
 
 Changes/Roadmap
 ===============
+### v0.0.4
+* Changes based on [Foodcritic](http://acrmp.github.com/foodcritic/) recommendations:
+** Use strings in preference to symbols to access node attributes.
+** Avoid repetition of resource declarations (combine git clone and rake init step)
+
 ### v0.0.3
 
 * Fix a bug with the config template that was not properly handling explicit jobs or jobs to ignore

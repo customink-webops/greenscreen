@@ -36,35 +36,31 @@ gem_package "sinatra" do
   version "1.0"
 end
 
-node[:greenscreens].each do |gs|
-  directory "#{node[:greenscreen][:install_dir]}/#{gs[:name]}" do
+node["greenscreens"].each do |gs|
+  greenscreen_directory = "#{node["greenscreen"]["install_dir"]}/#{gs["name"]}"
+
+  directory greenscreen_directory do
     recursive true
   end
   
-  execute "Clone the Greenscreen repository" do
-    cwd "#{node[:greenscreen][:install_dir]}/#{gs[:name]}"
-    command "if [ ! -e #{node[:greenscreen][:install_dir]}/#{gs[:name]}/.git ]; then git clone git://github.com/customink/greenscreen.git .; fi"
-  end
-    
-  execute "Initiliaze the application" do
-    cwd "#{node[:greenscreen][:install_dir]}/#{gs[:name]}"
-    command "rake -f init.rakefile"
-  end
+  execute "Clone the Greenscreen repository and initiliaze the application" do
+    cwd greenscreen_directory
+    command "if [ ! -e #{node["greenscreen"]["install_dir"]}/#{gs["name"]}/.git ]; then git clone git://github.com/customink/greenscreen.git .; fi && rake -f init.rakefile"
   
-  template "#{node[:greenscreen][:install_dir]}/#{gs[:name]}/config.yml" do
+  template "#{node["greenscreen"]["install_dir"]}/#{gs["name"]}/config.yml" do
     source "config.yml.erb"
     owner "root"
     group "root"
     variables(
-      :servers => gs[:servers]
+      :servers => gs["servers"]
     )
   end
   
   execute "launch greenscreen" do
     ruby_bin=`which ruby`.strip
 
-    cwd "#{node[:greenscreen][:install_dir]}/#{gs[:name]}"
-    command "su root -c 'nohup #{ruby_bin} #{node[:greenscreen][:install_dir]}/#{gs[:name]}/greenscreen.rb -p #{gs[:port]} > #{node[:greenscreen][:install_dir]}/#{gs[:name]}/greenscreen.log 2>&1 &';"
+    cwd greenscreen_directory
+    command "su root -c 'nohup #{ruby_bin} #{node["greenscreen"]["install_dir"]}/#{gs["name"]}/greenscreen.rb -p #{gs[:port]} > #{node["greenscreen"]["install_dir"]}/#{gs["name"]}/greenscreen.log 2>&1 &';"
 
     not_if "ps -ef | grep '[g]reenscreen -p #{gs[:port]}"
   end
