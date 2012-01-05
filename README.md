@@ -9,8 +9,8 @@ Changes/Roadmap
 ===============
 ### v0.0.4
 * Changes based on [Foodcritic](http://acrmp.github.com/foodcritic/) recommendations:
-** Use strings in preference to symbols to access node attributes.
-** Avoid repetition of resource declarations (combine git clone and rake init step)
+  * Use strings in preference to symbols to access node attributes.
+  * Avoid repetition of resource declarations (combine git clone and rake init step)
 
 ### v0.0.3
 
