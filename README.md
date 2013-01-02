@@ -3,7 +3,7 @@ Description
 
 GreenScreen is a build monitoring tool that is designed to be used as a dynamic Big Visible Chart (BVC) in your work area. It lets you add links to your build servers and displays the largest possible information on a monitor so that the team can see the build status from anywhere in the room.
 
-This cookbook configures a node to run one or more GreenScreen applications.  The cookbook uses [CustomInk's clone of the original GreenScreen project](git://github.com/customink/greenscreen.git).
+This cookbook configures a node to run one or more GreenScreen applications.  The cookbook uses [CustomInk's clone of the original GreenScreen project](https://github.com/customink/stoplight).
 
 Changes/Roadmap
 ===============
